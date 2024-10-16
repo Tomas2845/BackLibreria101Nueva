@@ -3,6 +3,7 @@ import morgan from "morgan";
 
 import path from "path";
 import { fileURLToPath } from "url";
+import "./src/database/dbConnection.js";
 
 console.log("hola mundo");
 //1 - configurar un puerto
@@ -20,13 +21,12 @@ app.use(morgan("dev")); // nos da informacion extra en la terminal
 app.use(express.json()); // interpretar los datos en formato json de la solciitud
 app.use(express.urlencoded({ extended: true }));
 
-
 const __filename = fileURLToPath(import.meta.url);
 console.log(__filename);
 const __dirname = path.dirname(__filename);
-console.log(__filename)
+console.log(__filename);
 
-app.use(express.static(path.join(__dirname,'/public')))
+app.use(express.static(path.join(__dirname, "/public")));
 
 //3 - configurar las rutas
 
