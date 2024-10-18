@@ -8,7 +8,8 @@ const productoSchema = new Schema({
     maxLength: 100,
     unique: true, // propiedad que no deja cargar otro producto del mismo nombre
   },
-  Precio: {
+  
+  precio: {
     type: Number,
     required: true,
     minLength: 50,
@@ -19,7 +20,9 @@ const productoSchema = new Schema({
     type: String,
     required: true,
     validate: {
-      validator: (valor) => {}, // falta estructura imagen
+      validator: (valor) => {
+        return /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/.test(valor)
+      }, 
     },
   },
 
@@ -42,7 +45,7 @@ const productoSchema = new Schema({
     minLength: 3,
     maxLength: 50,
   },
-  descripcion_amplis: {
+  descripcion_amplia: {
     type: String,
     required: true,
     minLength: 50,

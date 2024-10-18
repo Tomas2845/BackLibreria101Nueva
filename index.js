@@ -1,11 +1,13 @@
 import express from "express";
 import morgan from "morgan";
+
 import path from "path";
 import { fileURLToPath } from "url";
 import "./src/database/dbConnection.js";
 import router from "./src/routes/productos.routes.js";
 
 console.log("hola mundo");
+
 //1 - configurar un puerto
 
 const app = express();
