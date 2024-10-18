@@ -1,9 +1,9 @@
 import express from "express";
 import morgan from "morgan";
-
 import path from "path";
 import { fileURLToPath } from "url";
 import "./src/database/dbConnection.js";
+import router from "./src/routes/productos.routes.js";
 
 console.log("hola mundo");
 //1 - configurar un puerto
@@ -32,7 +32,4 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 // http://localhost:4000/prueba
 
-app.get("/prueba", (req, res) => {
-  console.log("alguien hizo una solicitud get a la ruta de prueba ");
-  res.send("Hola mundo desde backend");
-});
+app.use('/api', router)
