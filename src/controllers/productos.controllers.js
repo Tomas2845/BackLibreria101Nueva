@@ -21,5 +21,23 @@ export const crearProducto = async (req, res) => {
     console.error(error)
     res.status(500).json({mensaje:'Ocurrio un error, no se pudo crear el producto'})
   }
+
 }
+
+export const listarProductos = async (req, res) => {
+  
+  try{
+ 
+ // pedir a la base de datos la coleccion de productos
+ const productos = await Producto.find()
+
+ //enviar respuesta que pudimos crear el producto 
+ res.status(201).json(productos)
+  } catch(error){
+    console.error(error)
+    res.status(500).json({mensaje:'Ocurrio un error, no se pudo crear el producto'})
+  }
+
+}
+
 
