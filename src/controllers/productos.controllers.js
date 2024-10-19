@@ -89,4 +89,20 @@ export const borrarProducto = async (req, res) => {
   }
 };
 
-export  
+export const ObtenerProducto = async (req, res) => {
+  try {
+    // verificar si el producto existe
+    const productoBuscado = await Producto.findById(req.params.id);
+    //si no existe envio un mensaje
+    if (!productoBuscado) {
+      return res.status(404).json({ mensaje: "El producto no fue encontrado" });
+    }
+    //si existe devovler el producto
+    res.status(200).json(productoBuscado);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ mensaje: "Ocurrio un error, no se pudo crear el producto" });
+  }
+};
