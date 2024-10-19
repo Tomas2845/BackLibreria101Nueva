@@ -67,3 +67,26 @@ export const editarProducto = async (req, res) => {
       .json({ mensaje: "Ocurrio un error, no se pudo crear el producto" });
   }
 };
+
+export const borrarProducto = async (req, res) => {
+  try {
+    //verificar si el ID es valido
+    const productoBuscado = await Producto.findById(req.params.id);
+    // si el id no existe enviar un mensaje de error
+    if (!productoBuscado) {
+      return res.status(404).json({ mensaje: "El producto no fue encontrado" });
+    }
+    // si existe el producto con el id  lo borro y respondo al frontned
+    await Producto.findByIdAndDelete(req.params.id);
+    res
+      .status(200)
+      .json({ mensaje: "el producto fue eliminado correctamente" });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ mensaje: "Ocurrio un error, no se pudo crear el producto" });
+  }
+};
+
+export  
