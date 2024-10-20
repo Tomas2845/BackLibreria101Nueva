@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "Backend para el proyecto liberia 101",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "mongoose": "^8.7.1",
     "morgan": "^1.10.0"

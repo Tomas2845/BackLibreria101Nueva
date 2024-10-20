@@ -1,6 +1,6 @@
 import express from "express";
 import morgan from "morgan";
-
+import cors from "cors"
 import path from "path";
 import { fileURLToPath } from "url";
 import "./src/database/dbConnection.js";
@@ -18,7 +18,7 @@ app.listen(app.get("port"), () => {
 });
 
 //2 - configurar middlewares
-
+app.use(cors())
 app.use(morgan("dev")); // nos da informacion extra en la terminal
 app.use(express.json()); // interpretar los datos en formato json de la solciitud
 app.use(express.urlencoded({ extended: true }));
